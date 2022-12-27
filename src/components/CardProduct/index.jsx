@@ -1,9 +1,14 @@
+import CardImgs from "./CardImg"
+import CardPrice from "./CardPrice"
+import CardTitle from "./CardTitle"
+
 const CardProduct = (props) => {
   const { srcImg, nameProduct } = props
 
   return <div>
-    <img src={srcImg} alt="#" />
-    <h3>{nameProduct}</h3>
+    <CardImgs />
+    <CardTitle />
+    <CardPrice />
   </div>
 }
 
