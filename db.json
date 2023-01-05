@@ -1,0 +1,36 @@
+{
+  "animals": [
+    {
+      "id": 1,
+      "name": "Cat",
+      "img": "https://media.istockphoto.com/id/1067347086/photo/cat-with-blue-eyes-looks-at-camera.jpg?s=612x612&w=0&k=20&c=UP1yQs6o0eidm4L2F74DDm02pyeH40MwBwwGRAKhb4E="
+    },
+    {
+      "id": 2,
+      "name": "Dog",
+      "img": "https://thumbs.dreamstime.com/b/golden-retriever-dog-21668976.jpg"
+    },
+    {
+      "id": 3,
+      "name": "Chicken",
+      "img": "https://media.istockphoto.com/id/831791190/photo/hen.jpg?s=612x612&w=0&k=20&c=MWCYlBKqBQKHQuuHVfOYdBVXhNJs0yzJ9LnK76qpfqw="
+    }
+  ],
+  "showbiz": [
+    {
+      "id": 1,
+      "name": "MoNo",
+      "img": "https://image.thanhnien.vn/w1024/Uploaded/2023/lxwpcqjwp/2022_08_08/mono-35-33.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Son Tung",
+      "img": "https://kenh14cdn.com/203336854389633024/2020/12/31/photo-1-16094117624341764656274.jpg"
+    },
+    {
+      "id": 3,
+      "name": "Tung Son",
+      "img": "https://kenh14cdn.com/2016/14681909-1192219210853130-161104642310933378-o-1476344881794.jpg"
+    }
+  ]
+}
