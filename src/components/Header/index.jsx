@@ -1,8 +1,20 @@
+import { Link, useNavigate } from 'react-router-dom'
 import './header.css'
 
 const Header = () => {
+  const navigate = useNavigate()
+
+  const handleLogout = () => {
+    // Handle something
+    navigate('/login-layout')
+  }
+
   return <div className='header-container'>
-    <h1 className='header-container__title'>Header</h1>
+    <ul>
+      <li><Link to={'/'}>HomePage</Link></li>
+      <li><Link to={'/about'}>About</Link></li>
+    </ul>
+    <button onClick={handleLogout}>LOGOUT</button>
   </div>
 }
 
