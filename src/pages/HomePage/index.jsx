@@ -1,5 +1,6 @@
-import { useNavigate } from "react-router-dom"
-import CardProduct from "../../components/CardProduct"
+import { useState } from "react"
+import ProductForm from "./ProductForm"
+import ProductTable from "./ProductTable"
 
 const mockData = [
   {
@@ -15,21 +16,9 @@ const mockData = [
 ]
 
 const HomePage = () => {
-  const navigate = useNavigate()
-
-  const handleGoProductDetail = (id) => {
-    navigate(`/products/${id}`)
-  }
-
-  return <div style={{ display: 'flex', gap: '30px' }}>
-    {mockData.map(data => {
-      return <CardProduct
-        key={data.id}
-        onClick={() => handleGoProductDetail(data.id)}
-        srcImg={data.srcImg}
-        nameProduct={data.name}
-      />
-    })}
+  return <div>
+    <ProductForm />
+    <ProductTable />
   </div>
 }
 

@@ -1,5 +1,6 @@
 import React from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom';
+import './LoginPage.scss'
 
 const LoginPage = () => {
   const navigate = useNavigate()
@@ -13,15 +14,18 @@ const LoginPage = () => {
   }
 
   return (
-    <div>
-      <form onSubmit={handleLogin}>
+    <div className='login-wrapper'>
+      <form onSubmit={handleLogin} className='login-form'>
         <label>Username: </label>
         <input type={"text"} />
         <label>Password: </label>
         <input type={"password"} />
         <button type='submit'>Submit</button>
+        <div className='login-form__link'>
+          <Link to='/login-layout/register'>You don't have account?</Link>
+        </div>
       </form>
-      <Link to='/login-layout/register'>You don't have account?</Link>
+
     </div >
   )
 }
