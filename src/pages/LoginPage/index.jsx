@@ -4,6 +4,9 @@ import { Link, useNavigate } from 'react-router-dom';
 import { yupResolver } from '@hookform/resolvers/yup'
 import { loginFormSchema } from '../../constants/formLoginSchema';
 import './LoginPage.scss'
+import { useDispatch, useSelector } from 'react-redux'
+import { actReLogin, fetchLogin } from '../../redux/features/users/usersSlice';
+import { useEffect } from 'react';
 
 const initialFormValue = {
   username: '',
@@ -12,20 +15,32 @@ const initialFormValue = {
 
 const LoginPage = () => {
   const navigate = useNavigate()
+  const { isLoading, isLogged, accessToken } = useSelector(state => state.users)
   const methods = useForm({
     defaultValues: initialFormValue,
     resolver: yupResolver(loginFormSchema)
   })
+  const dispatch = useDispatch()
   const { control, handleSubmit, formState: { errors } } = methods
 
-  console.log(errors, 'errors');
+  useEffect(() => {
+    if (accessToken) {
+      dispatch(actReLogin(accessToken))
+    }
+  }, [])
+
+  useEffect(() => {
+    if (isLogged) {
+      navigate('/')
+    }
+  }, [isLogged, navigate])
 
   const onValid = (values) => {
-    console.log(values);
-    // Check dieu kien login
-    // VD: username = admin,
-    // Pass = admin
-    navigate('/')
+    const payload = {
+      email: values.username,
+      password: values.password
+    }
+    dispatch(fetchLogin(payload))
   }
 
   return (
@@ -63,7 +78,7 @@ const LoginPage = () => {
         {!!errors.password && <span className='error-message'>
           {errors.password.message}
         </span>}
-        <button type='submit'>Submit</button>
+        <button type='submit' disabled={isLoading}>Submit</button>
         <div className='login-form__link'>
           <Link to='/login-layout/register'>You don't have account?</Link>
         </div>
