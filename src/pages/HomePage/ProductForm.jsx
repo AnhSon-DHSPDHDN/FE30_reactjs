@@ -1,16 +1,21 @@
 import React from 'react'
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { actCreateProduct } from '../../redux/features/products/productsSlice';
 import './HomePage.scss'
 
+const initialFormValue = {
+  productCode: "",
+  productName: "",
+  productType: "Apple",
+  productQuantity: "",
+  productImportPrice: "",
+  productSalePrice: "",
+}
+
 const ProductForm = () => {
-  const [formState, setFormState] = useState({
-    productId: "",
-    productName: "",
-    productType: "Apple",
-    productQuantity: "",
-    productImportPrice: "",
-    productSalePrice: "",
-  });
+  const dispatch = useDispatch()
+  const [formState, setFormState] = useState(initialFormValue);
 
   const handleChangeInputForm = (event) => {
     const { name, value } = event.target;
@@ -22,7 +27,8 @@ const ProductForm = () => {
 
   const handleSubmitForm = (event) => {
     event.preventDefault();
-    console.log(formState);
+    dispatch(actCreateProduct(formState))
+    setFormState(initialFormValue)
   };
 
   return (
@@ -32,10 +38,11 @@ const ProductForm = () => {
           <label htmlFor="product_id">Mã Hàng: </label>
           <input
             id="product_id"
-            name="productId"
+            name="productCode"
             type="text"
-            value={formState.productId} // => Controlled Component
+            value={formState.productCode} // => Controlled Component
             onChange={handleChangeInputForm}
+            required
           />
         </div>
         <div>
@@ -46,6 +53,7 @@ const ProductForm = () => {
             type="text"
             value={formState.productName} // => Controlled Component
             onChange={handleChangeInputForm}
+            required
           />
         </div>
         <div>
@@ -70,6 +78,7 @@ const ProductForm = () => {
             type="number"
             value={formState.productQuantity} // => Controlled Component
             onChange={handleChangeInputForm}
+            required
           />
         </div>
         <div>
@@ -80,6 +89,7 @@ const ProductForm = () => {
             type="number"
             value={formState.productImportPrice} // => Controlled Component
             onChange={handleChangeInputForm}
+            required
           />
         </div>
         <div>
@@ -90,6 +100,7 @@ const ProductForm = () => {
             type="number"
             value={formState.productSalePrice} // => Controlled Component
             onChange={handleChangeInputForm}
+            required
           />
         </div>
 
