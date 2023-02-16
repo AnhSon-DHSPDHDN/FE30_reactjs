@@ -1,8 +1,12 @@
 import React from 'react'
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { actAddProduct } from '../../redux/features/products/productsSlice';
 import './HomePage.scss'
 
 const ProductForm = () => {
+  const dispatch = useDispatch()
+
   const [formState, setFormState] = useState({
     productId: "",
     productName: "",
@@ -22,7 +26,7 @@ const ProductForm = () => {
 
   const handleSubmitForm = (event) => {
     event.preventDefault();
-    console.log(formState);
+    dispatch(actAddProduct(formState))
   };
 
   return (

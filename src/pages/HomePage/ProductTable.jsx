@@ -1,7 +1,11 @@
 import React from 'react'
+import { useSelector } from 'react-redux';
 import './HomePage.scss'
 
 const ProductTable = () => {
+  const products = useSelector(state => state.products.products)
+  console.log(products, 'products');
+
   return (
     <div className='product-table-wrapper'>
       <table className='product-table'>
@@ -16,14 +20,16 @@ const ProductTable = () => {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Mã Hàng</td>
-            <td>Tên sản phẩm</td>
-            <td>Loại ngành hàng</td>
-            <td>Số lượng</td>
-            <td>Giá nhập</td>
-            <td>Giá bán</td>
-          </tr>
+          {products.map((product, index) => {
+            return <tr key={index}>
+              <td>{product.productId}</td>
+              <td>{product.productName}</td>
+              <td>{product.productType}</td>
+              <td>{product.productQuantity}</td>
+              <td>Giá nhập</td>
+              <td>Giá bán</td>
+            </tr>
+          })}
         </tbody>
       </table>
     </div>
